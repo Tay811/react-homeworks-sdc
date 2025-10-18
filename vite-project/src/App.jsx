@@ -1,13 +1,12 @@
-import './App.css'
-import ItemsList from './components/ItemsList.jsx'
+import React from "react";
+import AppContainer from "./components/AppContainer";
+import HomePage from "./pages/HomePage";
 
-function App() {
+export default function App() {
   return (
-    <div className="app">
-      <h1>React HW #1</h1>
-      <ItemsList />
-    </div>
-  )
+    <AppContainer>
+      <HomePage />
+    </AppContainer>
+  );
 }
 
-export default App
