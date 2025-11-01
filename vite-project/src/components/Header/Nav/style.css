@@ -1,0 +1,24 @@
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #6b7280;
+  font-weight: 500;
+  transition: color .15s ease;
+}
+
+.nav__link:hover {
+  color: #1f2937;
+}
+
+.nav__link--active {
+  color: #10b9a7;
+  font-weight: 600;
+}

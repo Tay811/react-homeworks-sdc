@@ -1,0 +1,37 @@
+
+.cart {
+  position: relative;
+  width: 42px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: #19b5b2;                    
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(25,181,178,0.25);
+  padding: 0;
+}
+
+.cart__icon { 
+    width: 20px; 
+    height: 20px; 
+    display:block;
+} 
+
+.cart__badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  color: #0f766e;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+}
