@@ -3,12 +3,16 @@ import Card from "./Card";
 import Tabs from "./Tabs";
 import "./style.css";
 
-export default function Menu({ meals = [], hasMore, loading, onSeeMore, onAdd }) {
-  const tabItems = [
-    { id: 1, title: "Desert" },
-    { id: 2, title: "Dinner" },
-    { id: 3, title: "Breakfast" },
-  ];
+export default function Menu({
+  meals = [],
+  hasMore,
+  loading,
+  onSeeMore,
+  onAdd,
+  category = "Dessert",
+  onCategoryChange = () => {},
+  categories = [],               
+}) {
 
   return (
     <div className="menu">
@@ -18,7 +22,7 @@ export default function Menu({ meals = [], hasMore, loading, onSeeMore, onAdd })
         Fast and fresh food.
       </p>
 
-      <Tabs items={tabItems} />
+      <Tabs items={categories} value={category} onChange={onCategoryChange} />
 
       <div className="menu__grid">
         {meals.map((item) => (
