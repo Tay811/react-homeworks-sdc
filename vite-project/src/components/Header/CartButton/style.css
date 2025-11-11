@@ -1,0 +1,36 @@
+ .cartButton {
+  position: relative;
+  background: #35B8BE;
+  border: none;
+  cursor: pointer;
+  color: #2a3342;           
+  padding: 5px;
+  border-radius: 5px;
+  height: 55px;
+  width: 55px;
+}
+
+.cartButton__icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+}
+
+.cartButton__badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #fff;
+  color: #35B8BE;
+  border-radius: 999px;
+  min-width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: #2a3342;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+} 
+

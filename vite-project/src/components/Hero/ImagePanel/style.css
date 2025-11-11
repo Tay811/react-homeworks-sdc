@@ -1,0 +1,20 @@
+.hero__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero__imageWrap {
+  position: relative;
+  padding: 14px;
+  border-radius: 32px;
+  width: 520px;
+  max-width: 100%;
+}
+
+.hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  object-fit: cover;
+}

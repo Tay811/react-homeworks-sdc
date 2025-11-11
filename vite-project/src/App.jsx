@@ -1,13 +1,16 @@
-import './App.css'
-import ItemsList from './components/ItemsList.jsx'
+import React, { useState } from "react";
+import AppContainer from "./components/AppContainer/index.jsx";
+import MenuPage from "./pages/MenuPage";
 
-function App() {
+export default function App() {
+  const [cartCount, setCartCount] = useState(0);
+  const handleAddToCart = (_item, qty = 1) =>
+    setCartCount((n) => n + Number(qty || 1));
+
   return (
-    <div className="app">
-      <h1>React HW #1</h1>
-      <ItemsList />
-    </div>
-  )
+    <AppContainer cartCount={cartCount}>
+      <MenuPage onAdd={handleAddToCart} />
+    </AppContainer>
+  );
 }
 
-export default App
