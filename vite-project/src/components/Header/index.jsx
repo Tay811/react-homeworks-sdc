@@ -3,7 +3,7 @@ import LogoImg from "../../assets/icons/Logo.png";
 import Nav from "./Nav";
 import CartButton from "./CartButton";
 
-export default function Header() {
+export default function Header({ cartCount = 0 }) {
   return (
     <header className="header">
       <div className="header__inner">
@@ -13,7 +13,7 @@ export default function Header() {
 
         <div className="header__right">
           <Nav />
-          <CartButton />
+          <CartButton count={cartCount} />
         </div>
       </div>
     </header>

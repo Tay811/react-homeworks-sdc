@@ -47,3 +47,14 @@
   margin-top: auto;
   margin-bottom: 50px; 
 }
+
+.footer__title--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.footer__title--link:hover {
+  text-decoration: none; 
+  opacity: 0.9;          
+}

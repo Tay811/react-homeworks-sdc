@@ -1,0 +1,36 @@
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip__bubble {
+  position: absolute;
+  left: 50%;
+  bottom: 125%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+  z-index: 10;
+}
+
+.tooltip__bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #111827;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}

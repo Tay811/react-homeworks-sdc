@@ -59,37 +59,6 @@
     color: #111827; 
 }
 
-.tooltip { 
-  position: relative; 
-  display: inline-block;
-  cursor: help; 
-  font-size: 16px;
-}
-.tooltip__bubble {
-  position: absolute; 
-  left: 50%; 
-  bottom: 125%; 
-  transform: translateX(-50%);
-  background: #1e293b; 
-  color: #fff; 
-  padding: 8px 10px; 
-  border-radius: 8px;
-  font-size: 16px; 
-  white-space: nowrap; 
-  opacity: 0; 
-  pointer-events: none;
-  transition: opacity .15s ease, transform .15s ease; 
-  z-index: 10;
-}
-.tooltip__bubble::after {
-  content: ""; 
-  position: absolute; 
-  top: 100%; 
-  left: 50%; 
-  transform: translateX(-50%);
-  border: 6px solid transparent; 
-  border-top-color: #1e293b;
-}
 .is-visible { 
   opacity: 1; 
   transform: translateX(-50%) translateY(-4px); 

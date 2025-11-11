@@ -8,7 +8,7 @@ export default function Bottom() {
   return (
     <div className="footer__bottom">
       <div className="footer__credits">
-        Built by <a href="#">Flowbase</a>. Powered by <a href="#">Webflow</a>
+        Built by <a href="#" className="footer__link">Flowbase</a>. Powered by <a href="#" className="footer__link">Webflow</a>
       </div>
 
       <div className="footer__social">

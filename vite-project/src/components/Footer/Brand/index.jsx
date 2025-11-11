@@ -5,7 +5,9 @@ import "./style.css";
 export default function Brand() {
   return (
     <div className="footer__left">
+     <a href="/" className="footer__logo-link" aria-label="Go to homepage">
       <img src={Logo} alt="Flowbase" className="footer__logo" />
+      </a>
       <p className="footer__tagline">
         Takeaway & Delivery template
         <br />

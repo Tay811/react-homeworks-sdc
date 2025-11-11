@@ -1,7 +1,7 @@
 import "./style.css";
 import BgImg from "../../assets/images/bg-main.png";
 
-import Text from "./Text";
+import HeroContent from "./HeroContent";
 import ActionButton from "./ActionButton";
 import TrustPilotView from "./TrustPilotView";
 import ImagePanel from "./ImagePanel";
@@ -13,7 +13,7 @@ export default function Hero() {
 
       <div className="hero__inner">
         <div className="hero__left">
-          <Text />
+          <HeroContent />
 
           <div className="hero__cta">
             <ActionButton />

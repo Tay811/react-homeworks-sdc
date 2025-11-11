@@ -1,0 +1,21 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 50px 0 36px;
+}
+
+.tabs__button {
+  background: white;
+  border: 1px solid #cfd8dc;
+  color: #2a3342;
+  padding: 8px 24px;
+  border-radius: 6px;
+  cursor: default;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.tabs__button:hover {
+  background: #f2f7f7;
+}
