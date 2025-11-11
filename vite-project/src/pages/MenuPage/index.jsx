@@ -2,11 +2,19 @@ import { useEffect, useState } from "react";
 import { fetchMeals } from "../../api/menu";
 import Menu from "../../components/Menu";
 
+const DEFAULT_CATEGORIES = [
+  { id: 1, title: "Dessert" },
+  { id: 2, title: "Dinner" },
+  { id: 3, title: "Breakfast" },
+];
+
 export default function MenuPage({ onAdd }) {
   const [meals, setMeals] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("Dessert");
+  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
 
   const PAGE_SIZE = 6;
 
@@ -14,8 +22,39 @@ export default function MenuPage({ onAdd }) {
     let cancelled = false;
     (async () => {
       try {
+        const { data } = await fetchMeals({ page: 1, limit: 1000 });
+        if (cancelled) return;
+
+        const uniq = Array.from(
+        new Set((data ?? []).map((m) => m.category).filter(Boolean))
+      );
+      const list =
+        uniq.length > 0
+          ? uniq.map((key, i) => ({ id: i + 1, title: key }))
+          : DEFAULT_CATEGORIES;
+
+        setCategories(list);
+      } catch (err) {
+      console.error("Failed to load categories:", err);
+      setCategories(DEFAULT_CATEGORIES);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
         setLoading(true);
-        const { data } = await fetchMeals({ page, limit: PAGE_SIZE });
+        const { data } = await fetchMeals({
+          page,
+          limit: PAGE_SIZE,
+          category, 
+        });
         if (cancelled) return;
 
         setMeals((prev) => [...prev, ...(data ?? [])]);
@@ -26,13 +65,21 @@ export default function MenuPage({ onAdd }) {
         setLoading(false);
       }
     })();
+
     return () => {
       cancelled = true;
     };
-  }, [page]);
+  }, [page, category]);
 
   const handleSeeMore = () => {
     if (!loading && hasMore) setPage((p) => p + 1);
+  };
+
+  const handleCategoryChange = (next) => {
+    setCategory(next);
+    setMeals([]);
+    setPage(1);
+    setHasMore(true);
   };
 
   return (
@@ -43,6 +90,9 @@ export default function MenuPage({ onAdd }) {
         hasMore={hasMore}
         loading={loading}
         onAdd={onAdd}
+        category={category}
+        onCategoryChange={handleCategoryChange}
+        categories={categories}   
       />
     </section>
   );

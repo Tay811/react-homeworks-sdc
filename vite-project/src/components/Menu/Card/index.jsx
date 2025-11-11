@@ -22,7 +22,7 @@ export default function Card({ item, onAdd }) {
               type="number"
               min="1"
               value={qty}
-              onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
+              onChange={(e) => setQty(Number(e.target.value) || 1)}
             />
             <Button variant="primary" size="md" onClick={() => onAdd?.(item, qty)}>
               Add to card
