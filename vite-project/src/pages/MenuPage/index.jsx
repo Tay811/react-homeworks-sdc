@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchMeals } from "../../api/menu";
 import Menu from "../../components/Menu";
+import { fetchMeals } from "../../api/menu";
+import useFetch from "../../hooks/useFetch";
 
 const DEFAULT_CATEGORIES = [
   { id: 1, title: "Dessert" },
@@ -12,33 +13,35 @@ export default function MenuPage({ onAdd }) {
   const [meals, setMeals] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("Dessert");
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
 
   const PAGE_SIZE = 6;
+  const { send } = useFetch();
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
-      try {
-        const { data } = await fetchMeals({ page: 1, limit: 1000 });
-        if (cancelled) return;
 
-        const uniq = Array.from(
-        new Set((data ?? []).map((m) => m.category).filter(Boolean))
-      );
+    send({
+      action: "fetchMeals",
+      request: { page: 1, limit: 1000 },
+      exec: () => fetchMeals({ page: 1, limit: 1000 }),
+    }).then(({ data }) => {
+      if (cancelled) return;
+
+      const unique = [
+        ...new Set((data ?? []).map((m) => m.category).filter(Boolean)),
+      ];
+
       const list =
-        uniq.length > 0
-          ? uniq.map((key, i) => ({ id: i + 1, title: key }))
+        unique.length > 0
+          ? unique.map((key, i) => ({ id: i + 1, title: key }))
           : DEFAULT_CATEGORIES;
 
-        setCategories(list);
-      } catch (err) {
-      console.error("Failed to load categories:", err);
-      setCategories(DEFAULT_CATEGORIES);
-      }
-    })();
+      setCategories(list);
+    });
 
     return () => {
       cancelled = true;
@@ -47,20 +50,21 @@ export default function MenuPage({ onAdd }) {
 
   useEffect(() => {
     let cancelled = false;
+
     (async () => {
       try {
         setLoading(true);
-        const { data } = await fetchMeals({
-          page,
-          limit: PAGE_SIZE,
-          category, 
+
+        const { data } = await send({
+          action: "fetchMeals",
+          request: { page, limit: PAGE_SIZE, category },
+          exec: () => fetchMeals({ page, limit: PAGE_SIZE, category }),
         });
+
         if (cancelled) return;
 
         setMeals((prev) => [...prev, ...(data ?? [])]);
         setHasMore((data ?? []).length === PAGE_SIZE);
-      } catch {
-        setHasMore(false);
       } finally {
         setLoading(false);
       }
@@ -69,15 +73,16 @@ export default function MenuPage({ onAdd }) {
     return () => {
       cancelled = true;
     };
-  }, [page, category]);
+  }, [page, category, send]);
 
   const handleSeeMore = () => {
     if (!loading && hasMore) setPage((p) => p + 1);
   };
 
+
   const handleCategoryChange = (next) => {
     setCategory(next);
-    setMeals([]);
+    setMeals([]); 
     setPage(1);
     setHasMore(true);
   };
@@ -92,7 +97,7 @@ export default function MenuPage({ onAdd }) {
         onAdd={onAdd}
         category={category}
         onCategoryChange={handleCategoryChange}
-        categories={categories}   
+        categories={categories}
       />
     </section>
   );
