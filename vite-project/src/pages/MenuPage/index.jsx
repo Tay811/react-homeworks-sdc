@@ -46,7 +46,7 @@ export default function MenuPage({ onAdd }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [send]);
 
   useEffect(() => {
     let cancelled = false;
