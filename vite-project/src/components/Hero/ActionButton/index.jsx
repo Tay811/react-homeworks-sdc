@@ -4,7 +4,7 @@ export default function ActionButton() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/menu");
+    navigate("/order");
   };
 
   return (
