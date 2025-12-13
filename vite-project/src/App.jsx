@@ -1,44 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import AppContainer from "./components/AppContainer";
 import MenuPage from "./pages/MenuPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import OrderPage from "./pages/OrderPage";
 
-function ProtectedRoute({ user, children }) {
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+import { logout } from "./store/slices/authSlice";
+
+function ProtectedRoute({ children }) {
+  const user = useSelector((state) => state.auth.user);
+
+  if (!user) return <Navigate to="/login" replace />;
   return children;
 }
 
 export default function App() {
-  const [cartCount, setCartCount] = useState(0);
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
 
-  const handleAddToCart = (_item, qty = 1) =>
-    setCartCount((n) => n + Number(qty || 1));
-  
-
-  const handleLogin = (userData) => {
-    setUser(userData);
-  };
+  const user = useSelector((state) => state.auth.user);
+  const cartCount = useSelector((state) => state.user.cartCount);
 
   const handleLogout = () => {
-    setUser(null);
+    dispatch(logout());
   };
 
   return (
     <AppContainer cartCount={cartCount} user={user} onLogout={handleLogout}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/menu" element={<MenuPage onAdd={handleAddToCart} />} />
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/order"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute>
               <OrderPage />
             </ProtectedRoute>
           }
@@ -48,4 +46,3 @@ export default function App() {
     </AppContainer>
   );
 }
-

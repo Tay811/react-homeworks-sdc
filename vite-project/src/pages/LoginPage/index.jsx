@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
+
 import Button from "../../components/ui/Button";
 import "./style.css";
 
-export default function LoginPage({ onLogin }) {
+import { login } from "../../store/slices/authSlice";
+
+export default function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,13 +31,13 @@ export default function LoginPage({ onLogin }) {
         createdAt: serverTimestamp(),
       });
 
-      console.log("User saved with id:", docRef.id);
+      const payload = { id: docRef.id, ...userData };
 
-      onLogin({ id: docRef.id, ...userData });
+      dispatch(login(payload));
+
       navigate("/order", { replace: true });
     } catch (err) {
       console.error("Failed to save user in Firebase:", err);
-      alert("Не удалось сохранить пользователя");
     } finally {
       setSubmitting(false);
     }
