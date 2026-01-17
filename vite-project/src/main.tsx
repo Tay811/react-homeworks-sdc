@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 import { store } from "./store";
+import { ThemeProvider } from "./context/theme/ThemeContext"; 
 
 const rootElement = document.getElementById("root");
 
@@ -17,7 +18,9 @@ createRoot(rootElement).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </StrictMode>

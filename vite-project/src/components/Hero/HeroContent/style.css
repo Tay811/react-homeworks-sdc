@@ -1,22 +1,21 @@
-
 .hero__title {
-  margin: 0 0 28px;    
+  margin: 0 0 28px;
   font-size: 61px;
   line-height: 1.1;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: #0F172A;
+
+  color: var(--text-primary);
 }
 
 .hero__text {
-  margin: 0 0 55px;    
-  color: #6B7280;
+  margin: 0 0 55px;
   font-size: 19px;
-  line-height: 1.65;   
+  line-height: 1.65;
+  color: var(--text-primary);
 }
 
-
 .accent {
-  color: #28C5C0;
+  color: var(--accent);
   font-weight: 400;
 }

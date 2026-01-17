@@ -8,7 +8,7 @@ export default function ActionButton() {
   };
 
   return (
-    <button className="btn" onClick={handleClick}>
+    <button className="btn-action" onClick={handleClick}>
       Place an Order
     </button>
   );

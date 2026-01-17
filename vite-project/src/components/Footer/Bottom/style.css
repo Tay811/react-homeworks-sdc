@@ -7,19 +7,18 @@
 }
 
 .footer__credits {
-  color: #6B7280;
   font-size: 16px;
+  color: var(--text-secondary);
 }
 
 .footer__link {
-  color: #28C5C0;
+  color: var(--accent);
   text-decoration: none;
 }
 
 .footer__link:hover {
   text-decoration: underline;
 }
-
 
 .footer__social {
   display: flex;
@@ -28,11 +27,13 @@
 }
 
 .footer__social img {
+  background-color: var(--muted);
+  border-radius: 50%;
   width: 40px;
   height: 40px;
   display: block;
-  opacity: .9;
-  transition: opacity .15s ease, transform .15s ease;
+  opacity: 0.9;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .footer__social a:hover img {

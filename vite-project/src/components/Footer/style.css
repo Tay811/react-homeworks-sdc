@@ -1,6 +1,7 @@
 .footer {
   position: relative;
-  background: #F8FCFC;
+  background: var(--surface);
+  color: var(--text-primary);
   overflow: hidden;
 }
 
@@ -14,7 +15,7 @@
   height: 100%;
   object-fit: contain;
   object-position: left bottom;
-  opacity: .55;
+  opacity: 0.55;
   pointer-events: none;
   z-index: 0;
 }
@@ -29,7 +30,7 @@
   box-sizing: border-box;
   padding: 56px 24px 24px;
   display: grid;
-  grid-template-rows: auto 1fr auto; 
+  grid-template-rows: auto 1fr auto;
   row-gap: 0;
 }
 
@@ -43,9 +44,9 @@
 
 .footer__divider {
   height: 1px;
-  background: rgba(17, 24, 39, 0.08);
+  background: var(--border);
   margin-top: auto;
-  margin-bottom: 50px; 
+  margin-bottom: 50px;
 }
 
 .footer__title--link {
@@ -55,6 +56,6 @@
 }
 
 .footer__title--link:hover {
-  text-decoration: none; 
-  opacity: 0.9;          
+  text-decoration: none;
+  opacity: 0.9;
 }
