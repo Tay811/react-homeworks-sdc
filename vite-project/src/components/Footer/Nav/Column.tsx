@@ -1,16 +1,24 @@
-
 import Tooltip from "../../ui/Tooltip";
+import type { NavItem } from "./config";
+
+export interface FooterNavColumnProps {
+  title: string;
+  titleHref?: string;
+  titleTarget?: string;
+  items?: NavItem[];
+  dense?: boolean;
+}
 
 export default function FooterNavColumn({
   title,
-  titleHref,        
-  titleTarget,      
+  titleHref,
+  titleTarget,
   items = [],
-  dense = false,           
-}) {
+  dense = false,
+}: FooterNavColumnProps) {
   if (!items.length) return null;
 
-   const safeRel =
+  const safeRel =
     titleTarget === "_blank" ? "noopener noreferrer" : undefined;
 
   const Title = titleHref ? (
@@ -27,13 +35,14 @@ export default function FooterNavColumn({
   );
 
   return (
-     <nav className="footer__col" aria-label={title}>
+    <nav className="footer__col" aria-label={title}>
       {Title}
 
       <ul className={`footer__list${dense ? " footer__list--dense" : ""}`}>
         {items.map((item, i) => {
           const { label, href = "#", target, rel, tooltip } = item;
-          const itemRel = target === "_blank" ? rel || "noopener noreferrer" : rel;
+          const itemRel =
+            target === "_blank" ? rel || "noopener noreferrer" : rel;
 
           const Link = (
             <a href={href} target={target} rel={itemRel}>
@@ -43,7 +52,11 @@ export default function FooterNavColumn({
 
           return (
             <li key={`${title}-${label}-${i}`}>
-              {tooltip ? <Tooltip content={tooltip}>{Link}</Tooltip> : Link}
+              {tooltip ? (
+                <Tooltip content={tooltip}>{Link}</Tooltip>
+              ) : (
+                Link
+              )}
             </li>
           );
         })}

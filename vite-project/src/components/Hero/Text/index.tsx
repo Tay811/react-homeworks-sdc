@@ -1,7 +1,6 @@
 import "./style.css";
 
 export default function Text() {
-
   return (
     <div className="heroText">
       <h1 className="hero__title">

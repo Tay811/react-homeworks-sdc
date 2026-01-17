@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import Button from "../../ui/Button";
 import "./style.css";
 
-export default function Card({ item, onAdd }) {
+import type { Meal } from "../../../types/meal";
+
+export interface CardProps {
+  item: Meal;
+  onAdd?: (item: Meal, qty: number) => void;
+}
+
+export default function Card({ item, onAdd }: CardProps) {
   const { meal, instructions, price, img } = item;
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState<number>(1);
+
+  const handleAdd = () => {
+    onAdd?.(item, qty);
+  };
+
+  const handleQtyChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setQty(Number(e.target.value) || 1);
+  };
 
   return (
     <article className="menuCard">
@@ -15,17 +30,20 @@ export default function Card({ item, onAdd }) {
             <h3 className="menuCard__title">{meal}</h3>
             <span className="menuCard__price">${price} USD</span>
           </div>
-          <p className="menuCard__desc">{instructions?.slice(0, 90)}...</p>
+
+          <p className="menuCard__desc">{instructions?.slice(0, 90)}.</p>
+
           <div className="menuCard__bottom">
             <input
               className="menuCard__qty"
               type="number"
-              min="1"
+              min={1}
               value={qty}
-              onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
+              onChange={handleQtyChange}
             />
-            <Button variant="primary" size="md" onClick={() => onAdd?.(item, qty)}>
-              Add to card
+
+            <Button variant="primary" size="md" onClick={handleAdd}>
+              Add to cart
             </Button>
           </div>
         </div>
