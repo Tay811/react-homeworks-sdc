@@ -16,31 +16,51 @@ export type NavSection = {
 
 export const defaultSections: NavSection[] = [
   {
-    title: "Company",
+    title: "footerNav.company.title",
     items: [
-      { label: "Home", href: "#" },
-      { label: "Order", href: "#" },
-      { label: "FAQ", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "footerNav.company.items.home", href: "#" },
+      { label: "footerNav.company.items.order", href: "#" },
+      { label: "footerNav.company.items.faq", href: "#" },
+      { label: "footerNav.company.items.contact", href: "#" },
     ],
   },
   {
-    title: "Template",
+    title: "footerNav.template.title",
     titleHref: "https://www.google.com",
     titleTarget: "_blank",
     items: [
-      { label: "Style Guide", href: "https://www.google.com", target: "_blank" },
-      { label: "Changelog", href: "https://www.google.com", target: "_blank" },
-      { label: "Licence", href: "https://www.google.com", target: "_blank" },
-      { label: "Webflow University", href: "https://www.google.com", target: "_blank" },
+      {
+        label: "footerNav.template.items.styleGuide",
+        href: "https://www.google.com",
+        target: "_blank",
+      },
+      {
+        label: "footerNav.template.items.changelog",
+        href: "https://www.google.com",
+        target: "_blank",
+      },
+      {
+        label: "footerNav.template.items.licence",
+        href: "https://www.google.com",
+        target: "_blank",
+      },
+      {
+        label: "footerNav.template.items.webflowUniversity",
+        href: "https://www.google.com",
+        target: "_blank",
+      },
     ],
   },
   {
-    title: "Flowbase",
+    title: "footerNav.flowbase.title",
     dense: true,
     items: [
-      { label: "More Cloneables", href: "#" },
-      { label: "Phone", href: "#", tooltip: "Phone: +1 (234) 567-89-00" },
+      { label: "footerNav.flowbase.items.moreCloneables", href: "#" },
+      {
+        label: "footerNav.flowbase.items.phone",
+        href: "#",
+        tooltip: "footerNav.flowbase.items.phoneTooltip",
+      },
     ],
   },
 ];

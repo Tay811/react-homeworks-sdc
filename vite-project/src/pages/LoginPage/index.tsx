@@ -7,6 +7,7 @@ import { db } from "../../firebase";
 
 import Button from "../../components/ui/Button";
 import "./style.css";
+import { useTranslation } from "react-i18next";
 
 import { login } from "../../store/slices/authSlice";
 
@@ -19,6 +20,7 @@ type LoginPayload = {
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [pass, setPass] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -55,11 +57,11 @@ export default function LoginPage() {
 
   return (
     <section className="loginPage">
-      <h1>Log in</h1>
+      <h1>{t("login.title")}</h1>
 
       <form onSubmit={handleSubmit} className="loginPage__form">
         <label>
-          <span>User name</span>
+          <span>{t("login.username")}</span>
           <input
             type="text"
             value={name}
@@ -71,7 +73,7 @@ export default function LoginPage() {
         </label>
 
         <label>
-          <span>Password</span>
+          <span>{t("login.password")}</span>
           <input
             type="text"
             value={pass}
@@ -90,7 +92,7 @@ export default function LoginPage() {
             className="loginPage__btn"
             disabled={submitting}
           >
-            {submitting ? "Saving..." : "Submit"}
+            {submitting ? t("login.saving") : t("login.submit")}
           </Button>
 
           <Button
@@ -100,7 +102,7 @@ export default function LoginPage() {
             className="loginPage__btn"
             onClick={handleCancel}
           >
-            Cancel
+            {t("login.cancel")}
           </Button>
         </div>
       </form>

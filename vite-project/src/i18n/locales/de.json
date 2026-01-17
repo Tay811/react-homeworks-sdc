@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "menu": "Menü",
+    "company": "Unternehmen",
+    "login": "Anmelden"
+  },
+
+  "hero": {
+    "title": "Leckeres Essen & Takeaway, <accent>direkt</accent> zu dir nach Hause geliefert.",
+    "description": "Lorem Ipsum ist ein einfacher Blindtext der Druck- und Satzindustrie. Lorem Ipsum ist seit dem 16. Jahrhundert der Standard-Blindtext."
+  },
+
+  "actions": {
+    "order": "Jetzt bestellen"
+  },
+
+  "trust": {
+    "score": "<strong>4,8 von 5</strong> basierend auf <count>2000+</count> Bewertungen"
+  },
+  
+  "footer": {
+    "credits": "Erstellt von <flowbase>Flowbase</flowbase>. Unterstützt von <webflow>Webflow</webflow>",
+    "social": {
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+
+    "brand": {
+    "goHome": "Zur Startseite",
+    "logoAlt": "Flowbase",
+    "tagline": "Vorlage für Takeaway & Lieferung<br />für kleine bis mittlere Unternehmen."
+  },
+   "footerNav": {
+    "company": {
+      "title": "Unternehmen",
+      "items": {
+        "home": "Startseite",
+        "order": "Bestellung",
+        "faq": "FAQ",
+        "contact": "Kontakt"
+      }
+    },
+    "template": {
+      "title": "Vorlage",
+      "items": {
+        "styleGuide": "Styleguide",
+        "changelog": "Änderungsprotokoll",
+        "licence": "Lizenz",
+        "webflowUniversity": "Webflow University"
+      }
+    },
+    "flowbase": {
+      "title": "Flowbase",
+      "items": {
+        "moreCloneables": "Mehr Cloneables",
+        "phone": "Telefon",
+        "phoneTooltip": "Telefon: +1 (234) 567-89-00"
+      }
+    }
+  },
+
+   "menu": {
+    "card": {
+      "addToCart": "In den Warenkorb",
+      "currency": "USD",
+      "imageAlt": "Bild des Gerichts"
+
+    },
+     "tabs": {
+      "Dessert": "Dessert",
+      "Dinner": "Abendessen",
+      "Breakfast": "Frühstück"
+    },
+  "title": "Durchsuche unser Menü",
+  "lead": "Nutze unser Menü, um online zu bestellen, oder <phone>rufe</phone> unser Geschäft an, um eine Abholung zu vereinbaren. Frische und schnelle Küche.",
+  "seeMore": "Mehr anzeigen",
+  "loading": "Wird geladen..."
+  },
+  "login": {
+    "title": "Anmelden",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "submit": "Senden",
+    "cancel": "Abbrechen",
+    "saving": "Speichern..."
+  },
+  "order": {
+    "title": "Bestellung abschließen",
+    "empty": "Dein Warenkorb ist leer.",
+    "emptyHint": "Füge mindestens einen Artikel aus dem Menü hinzu.",
+    "street": "Straße",
+    "house": "Haus",
+    "addressHint": "Bitte fülle alle Adressfelder aus.",
+    "total": "Gesamt",
+    "submit": "Bestellen",
+    "submitting": "Bestellung läuft...",
+    "remove": "Artikel entfernen",
+    "currency": "USD"
+  }
+
+
+}

@@ -11,9 +11,9 @@ import type { Meal } from "../../types/meal";
 import type { TabItem } from "../../components/Menu/Tabs";
 
 const DEFAULT_CATEGORIES: TabItem[] = [
-  { id: 1, title: "Dessert" },
-  { id: 2, title: "Dinner" },
-  { id: 3, title: "Breakfast" },
+  { id: 1, value: "dessert", title: "menu.tabs.dessert" },
+  { id: 2, value: "dinner", title: "menu.tabs.dinner" },
+  { id: 3, value: "breakfast", title: "menu.tabs.breakfast" },
 ];
 
 export default function MenuPage() {
@@ -24,7 +24,8 @@ export default function MenuPage() {
   const [hasMore, setHasMore] = useState<boolean>(true);
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [category, setCategory] = useState<string>("Dessert");
+  const [category, setCategory] = useState<string>("dessert");
+
   const [categories, setCategories] = useState<TabItem[]>(DEFAULT_CATEGORIES);
 
   const PAGE_SIZE = 6;
@@ -48,9 +49,13 @@ export default function MenuPage() {
         ] as string[];
 
         const list: TabItem[] =
-          unique.length > 0
-            ? unique.map((key, i) => ({ id: i + 1, title: key }))
-            : DEFAULT_CATEGORIES;
+  unique.length > 0
+    ? unique.map((key, i) => ({
+        id: i + 1,
+        value: key,
+        title: `menu.tabs.${key}`,
+      }))
+    : DEFAULT_CATEGORIES;
 
         setCategories(list);
       } catch {

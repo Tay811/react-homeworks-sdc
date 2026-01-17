@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "company": "Company",
+    "login": "Login"
+  },
+
+  "hero": {
+    "title": "Beautiful food & takeaway, <accent>delivered</accent> to your door.",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500."
+  },
+
+  "actions": {
+    "order": "Place an Order"
+  },
+
+  "trust": {
+    "score": "<strong>4.8 out of 5</strong> based on <count>2000+</count> reviews"
+  },
+
+   "footer": {
+    "credits": "Built by <flowbase>Flowbase</flowbase>. Powered by <webflow>Webflow</webflow>",
+    "social": {
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+
+    "brand": {
+    "goHome": "Go to homepage",
+    "logoAlt": "Flowbase",
+    "tagline": "Takeaway & Delivery template<br />for small – medium businesses."
+  },
+    "footerNav": {
+    "company": {
+      "title": "Company",
+      "items": {
+        "home": "Home",
+        "order": "Order",
+        "faq": "FAQ",
+        "contact": "Contact"
+      }
+    },
+    "template": {
+      "title": "Template",
+      "items": {
+        "styleGuide": "Style Guide",
+        "changelog": "Changelog",
+        "licence": "Licence",
+        "webflowUniversity": "Webflow University"
+      }
+    },
+    "flowbase": {
+      "title": "Flowbase",
+      "items": {
+        "moreCloneables": "More Cloneables",
+        "phone": "Phone",
+        "phoneTooltip": "Phone: +1 (234) 567-89-00"
+      }
+    }
+  },
+  "menu": {
+    "card": {
+      "addToCart": "Add to cart",
+      "currency": "USD",
+      "imageAlt": "Meal image"
+    },
+    "tabs": {
+      "Dessert": "Dessert",
+      "Dinner": "Dinner",
+      "Breakfast": "Breakfast"
+    },
+         "title": "Browse our menu",
+  "lead": "Use our menu to place an order online, or <phone>phone</phone> our store to place a pickup order. Fast and fresh food.",
+  "seeMore": "See more",
+  "loading": "Loading..."
+  },
+  "login": {
+    "title": "Log in",
+    "username": "User name",
+    "password": "Password",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "saving": "Saving..."
+  },
+   "order": {
+    "title": "Finish your order",
+    "empty": "Your cart is empty.",
+    "emptyHint": "Add at least one item from Menu.",
+    "street": "Street",
+    "house": "House",
+    "addressHint": "Please fill all address fields.",
+    "total": "Total",
+    "submit": "Order",
+    "submitting": "Ordering...",
+    "remove": "Remove item",
+    "currency": "USD"
+  }
+}

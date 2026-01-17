@@ -3,6 +3,7 @@ import LogoImg from "../../assets/icons/Logo.png";
 import Nav from "./Nav";
 import CartButton from "./CartButton";
 import ThemeToggle from "./ThemeToggle"; 
+import LanguageDropdown from "./LanguageDropdown";
 
 export interface HeaderProps {
   cartCount?: number;
@@ -18,6 +19,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
 
         <div className="header__right">
           <Nav />
+          <LanguageDropdown />
           <ThemeToggle />
           <CartButton count={cartCount} />
         </div>

@@ -1,5 +1,6 @@
 import "./style.css";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type NavItem = {
   label: string;
@@ -7,11 +8,13 @@ type NavItem = {
 };
 
 export default function Nav() {
+  const { t } = useTranslation();
+
   const links: NavItem[] = [
-    { label: "Home", to: "/" },
-    { label: "Menu", to: "/menu" },
-    { label: "Company", to: "/company" },
-    { label: "Login", to: "/login" },
+    { label: t("nav.home"), to: "/" },
+    { label: t("nav.menu"), to: "/menu" },
+    { label: t("nav.company"), to: "/company" },
+    { label: t("nav.login"), to: "/login" },
   ];
 
   return (
