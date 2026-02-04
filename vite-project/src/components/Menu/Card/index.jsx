@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Button from "../../ui/Button";
 import "./style.css";
+import useFetch from "../../../hooks/useFetch";
+import { createOrderItem } from "../../../api/menu";
 
 export default function Card({ item, onAdd }) {
-  const { meal, instructions, price, img } = item;
+  const { meal, instructions, price, img, id } = item;
   const [qty, setQty] = useState(1);
 
   const handleAdd = () => {
