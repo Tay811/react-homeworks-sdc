@@ -1,5 +1,6 @@
 import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import Button from "../../components/ui/Button";
 import {
@@ -20,8 +21,11 @@ type ErrorsState = {
 
 export default function OrderPage() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  const items = useSelector((state: RootState) => state.user.cartItems) as CartItem[];
+  const items = useSelector(
+    (state: RootState) => state.user.cartItems
+  ) as CartItem[];
 
   const [street, setStreet] = useState<string>("");
   const [house, setHouse] = useState<string>("");
@@ -80,23 +84,27 @@ export default function OrderPage() {
 
   return (
     <section className="orderPageNew">
-      <h1 className="orderPageNew__title">Finish your order</h1>
+      <h1 className="orderPageNew__title">{t("order.title")}</h1>
 
       <form className="orderPageNew__form" onSubmit={handleSubmit} noValidate>
         <div className={`orderPageNew__list ${errors.cart ? "is-invalid" : ""}`}>
           {!items?.length ? (
             <div className="orderPageNew__empty">
-              Your cart is empty.
+              {t("order.empty")}
               {errors.cart && (
                 <div className="orderPageNew__hint">
-                  Add at least one item from Menu.
+                  {t("order.emptyHint")}
                 </div>
               )}
             </div>
           ) : (
             items.map((it) => (
               <div className="orderItem" key={it.id}>
-                <img className="orderItem__img" src={it.img} alt={String(it.meal)} />
+                <img
+                  className="orderItem__img"
+                  src={it.img}
+                  alt={String(it.meal)}
+                />
 
                 <div className="orderItem__info">
                   <div className="orderItem__name">{String(it.meal)}</div>
@@ -104,7 +112,7 @@ export default function OrderPage() {
 
                 <div className="orderItem__right">
                   <div className="orderItem__price">
-                    ${Number(it.price).toFixed(2)} USD
+                    ${Number(it.price).toFixed(2)} {t("order.currency")}
                   </div>
 
                   <input
@@ -121,8 +129,8 @@ export default function OrderPage() {
                     type="button"
                     className="orderItem__remove"
                     onClick={() => handleRemove(it.id)}
-                    aria-label="Remove item"
-                    title="Remove"
+                    aria-label={t("order.remove")}
+                    title={t("order.remove")}
                   >
                     ✕
                   </button>
@@ -134,45 +142,58 @@ export default function OrderPage() {
 
         <div className="orderPageNew__address">
           <div className="orderPageNew__row">
-            <label className="orderPageNew__label">Street</label>
+            <label className="orderPageNew__label">
+              {t("order.street")}
+            </label>
             <input
-              className={`orderPageNew__input ${errors.street ? "is-invalid" : ""}`}
+              className={`orderPageNew__input ${
+                errors.street ? "is-invalid" : ""
+              }`}
               type="text"
               value={street}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setStreet(e.target.value);
-                if (errors.street) setErrors((p) => ({ ...p, street: false }));
+                if (errors.street)
+                  setErrors((p) => ({ ...p, street: false }));
               }}
-              placeholder=""
             />
           </div>
 
           <div className="orderPageNew__row">
-            <label className="orderPageNew__label">House</label>
+            <label className="orderPageNew__label">
+              {t("order.house")}
+            </label>
             <input
-              className={`orderPageNew__input ${errors.house ? "is-invalid" : ""}`}
+              className={`orderPageNew__input ${
+                errors.house ? "is-invalid" : ""
+              }`}
               type="text"
               value={house}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setHouse(e.target.value);
-                if (errors.house) setErrors((p) => ({ ...p, house: false }));
+                if (errors.house)
+                  setErrors((p) => ({ ...p, house: false }));
               }}
-              placeholder=""
             />
           </div>
 
           {(errors.street || errors.house) && (
-            <div className="orderPageNew__hint">Please fill all address fields.</div>
+            <div className="orderPageNew__hint">
+              {t("order.addressHint")}
+            </div>
           )}
         </div>
 
         <div className="orderPageNew__footer">
           <div className="orderPageNew__total">
-            Total: <span>${total.toFixed(2)} USD</span>
+            {t("order.total")}:{" "}
+            <span>
+              ${total.toFixed(2)} {t("order.currency")}
+            </span>
           </div>
 
           <Button type="submit" variant="primary" size="md" disabled={submitting}>
-            {submitting ? "Ordering..." : "Order"}
+            {submitting ? t("order.submitting") : t("order.submit")}
           </Button>
         </div>
       </form>

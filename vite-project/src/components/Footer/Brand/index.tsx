@@ -1,17 +1,27 @@
 import Logo from "../../../assets/icons/Logo.png";
 import "./style.css";
 
+import { Trans, useTranslation } from "react-i18next";
 
 export default function Brand() {
+  const { t } = useTranslation();
+
   return (
     <div className="footer__left">
-     <a href="/" className="footer__logo-link" aria-label="Go to homepage">
-      <img src={Logo} alt="Flowbase" className="footer__logo" />
+      <a
+        href="/"
+        className="footer__logo-link"
+        aria-label={t("brand.goHome")}
+      >
+        <img
+          src={Logo}
+          alt={t("brand.logoAlt")}
+          className="footer__logo"
+        />
       </a>
+
       <p className="footer__tagline">
-        Takeaway & Delivery template
-        <br />
-        for small – medium businesses.
+        <Trans i18nKey="brand.tagline" />
       </p>
     </div>
   );

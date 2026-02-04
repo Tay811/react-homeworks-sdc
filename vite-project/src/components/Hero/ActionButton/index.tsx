@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function ActionButton() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     navigate("/order");
@@ -9,7 +11,7 @@ export default function ActionButton() {
 
   return (
     <button className="btn-action" onClick={handleClick}>
-      Place an Order
+      {t("actions.order")}
     </button>
   );
 }

@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "menu": "Menú",
+    "company": "Empresa",
+    "login": "Iniciar sesión"
+  },
+
+  "hero": {
+    "title": "Comida deliciosa y para llevar, <accent>entregada</accent> directamente a tu puerta.",
+    "description": "Lorem Ipsum es un texto de relleno utilizado en la industria de la impresión y la composición tipográfica desde el siglo XVI."
+  },
+
+  "actions": {
+    "order": "Hacer un pedido"
+  },
+
+  "trust": {
+    "score": "<strong>4.8 de 5</strong> basado en <count>2000+</count> reseñas"
+  },
+
+    "footer": {
+    "credits": "Creado por <flowbase>Flowbase</flowbase>. Impulsado por <webflow>Webflow</webflow>",
+    "social": {
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+
+    "brand": {
+    "goHome": "Ir a la página principal",
+    "logoAlt": "Flowbase",
+    "tagline": "Plantilla de comida para llevar y entrega<br />para pequeñas y medianas empresas."
+  },
+
+   "footerNav": {
+    "company": {
+      "title": "Empresa",
+      "items": {
+        "home": "Inicio",
+        "order": "Pedido",
+        "faq": "Preguntas frecuentes",
+        "contact": "Contacto"
+      }
+    },
+    "template": {
+      "title": "Plantilla",
+      "items": {
+        "styleGuide": "Guía de estilo",
+        "changelog": "Registro de cambios",
+        "licence": "Licencia",
+        "webflowUniversity": "Universidad de Webflow"
+      }
+    },
+    "flowbase": {
+      "title": "Flowbase",
+      "items": {
+        "moreCloneables": "Más clonables",
+        "phone": "Teléfono",
+        "phoneTooltip": "Teléfono: +1 (234) 567-89-00"
+      }
+    }
+  },
+  "menu": {
+    "card": {
+      "addToCart": "Añadir al carrito",
+      "currency": "USD",
+      "imageAlt": "Imagen del plato"
+      
+    },
+    "tabs": {
+      "Dessert": "Postres",
+      "Dinner": "Cena",
+      "Breakfast": "Desayuno"
+    },
+  "title": "Explora nuestro menú",
+  "lead": "Utiliza nuestro menú para hacer un pedido en línea o <phone>llama</phone> a nuestra tienda para recogerlo. Comida rápida y fresca.",
+  "seeMore": "Ver más",
+  "loading": "Cargando..."
+  },
+     "login": {
+    "title": "Iniciar sesión",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "saving": "Guardando..."
+  },
+  "order": {
+    "title": "Finalizar pedido",
+    "empty": "Tu carrito está vacío.",
+    "emptyHint": "Añade al menos un producto del menú.",
+    "street": "Calle",
+    "house": "Casa",
+    "addressHint": "Por favor, completa todos los campos de la dirección.",
+    "total": "Total",
+    "submit": "Pedir",
+    "submitting": "Realizando pedido...",
+    "remove": "Eliminar producto",
+    "currency": "USD"
+  }
+}

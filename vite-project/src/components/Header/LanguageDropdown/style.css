@@ -1,0 +1,15 @@
+.languageDropdown {
+  display: flex;
+  align-items: center;
+}
+
+.languageDropdown__select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: var(--border);
+  background: var(--surface);
+  font: inherit;
+  cursor: pointer;
+  height: 50px;
+  color: var(--text-primary);
+}

@@ -2,6 +2,7 @@ import Button from "../ui/Button";
 import Card from "./Card";
 import Tabs, { type TabItem } from "./Tabs";
 import "./style.css";
+import { Trans, useTranslation } from "react-i18next";
 
 import type { Meal } from "../../types/meal";
 
@@ -28,13 +29,19 @@ export default function Menu({
   onCategoryChange = () => {},
   categories = [],
 }: MenuProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="menu">
-      <h2 className="menu__title">Browse our menu</h2>
+      <h2 className="menu__title">{t("menu.title")}</h2>
+
       <p className="menu__lead">
-        Use our menu to place an order online, or{" "}
-        <span className="menu__lead--highlight">phone</span> our store to place a
-        pickup order. Fast and fresh food.
+        <Trans
+          i18nKey="menu.lead"
+          components={{
+            phone: <span className="menu__lead--highlight" />,
+          }}
+        />
       </p>
 
       <Tabs items={categories} value={category} onChange={onCategoryChange} />
@@ -47,8 +54,13 @@ export default function Menu({
 
       {hasMore && (
         <div className="menu__more-wrapper">
-          <Button variant="primary" size="md" onClick={onSeeMore} disabled={loading}>
-            {loading ? "Loading..." : "See more"}
+          <Button
+            variant="primary"
+            size="md"
+            onClick={onSeeMore}
+            disabled={loading}
+          >
+            {loading ? t("menu.loading") : t("menu.seeMore")}
           </Button>
         </div>
       )}
