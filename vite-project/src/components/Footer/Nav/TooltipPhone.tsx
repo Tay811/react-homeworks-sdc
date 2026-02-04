@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "../../Footer/style.css"; 
+import "../../Footer/style.css";
 
 export default function TooltipPhone() {
-  const [hover, setHover] = useState(false);
+  const [hover, setHover] = useState<boolean>(false);
   const phoneNumber = "+1 (234) 567-89-00";
 
   return (

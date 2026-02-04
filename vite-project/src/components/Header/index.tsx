@@ -3,7 +3,11 @@ import LogoImg from "../../assets/icons/Logo.png";
 import Nav from "./Nav";
 import CartButton from "./CartButton";
 
-export default function Header({ cartCount = 0 }) {
+export interface HeaderProps {
+  cartCount?: number;
+}
+
+export default function Header({ cartCount = 0 }: HeaderProps) {
   return (
     <header className="header">
       <div className="header__inner">

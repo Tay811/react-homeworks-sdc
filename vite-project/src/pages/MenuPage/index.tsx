@@ -7,7 +7,10 @@ import useFetch from "../../hooks/useFetch";
 
 import { addToCart } from "../../store/slices/userSlice";
 
-const DEFAULT_CATEGORIES = [
+import type { Meal } from "../../types/meal";
+import type { TabItem } from "../../components/Menu/Tabs";
+
+const DEFAULT_CATEGORIES: TabItem[] = [
   { id: 1, title: "Dessert" },
   { id: 2, title: "Dinner" },
   { id: 3, title: "Breakfast" },
@@ -16,38 +19,44 @@ const DEFAULT_CATEGORIES = [
 export default function MenuPage() {
   const dispatch = useDispatch();
 
-  const [meals, setMeals] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [meals, setMeals] = useState<Meal[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
-  const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState("Dessert");
-  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [category, setCategory] = useState<string>("Dessert");
+  const [categories, setCategories] = useState<TabItem[]>(DEFAULT_CATEGORIES);
 
   const PAGE_SIZE = 6;
-  const { send } = useFetch();
+  const { send } = useFetch(); 
 
   useEffect(() => {
     let cancelled = false;
 
-    send({
-      action: "fetchMeals",
-      request: { page: 1, limit: 1000 },
-      exec: () => fetchMeals({ page: 1, limit: 1000 }),
-    }).then(({ data }) => {
-      if (cancelled) return;
+    (async () => {
+      try {
+        const res = await send<{ data: Meal[]; total: number }>({
+          action: "fetchMeals",
+          request: { page: 1, limit: 1000 },
+          exec: () => fetchMeals({ page: 1, limit: 1000 }),
+        });
 
-      const unique = [
-        ...new Set((data ?? []).map((m) => m.category).filter(Boolean)),
-      ];
+        if (cancelled) return;
 
-      const list =
-        unique.length > 0
-          ? unique.map((key, i) => ({ id: i + 1, title: key }))
-          : DEFAULT_CATEGORIES;
+        const unique = [
+          ...new Set((res.data ?? []).map((m) => m.category).filter(Boolean)),
+        ] as string[];
 
-      setCategories(list);
-    });
+        const list: TabItem[] =
+          unique.length > 0
+            ? unique.map((key, i) => ({ id: i + 1, title: key }))
+            : DEFAULT_CATEGORIES;
+
+        setCategories(list);
+      } catch {
+        
+      }
+    })();
 
     return () => {
       cancelled = true;
@@ -61,7 +70,7 @@ export default function MenuPage() {
       try {
         setLoading(true);
 
-        const { data } = await send({
+        const res = await send<{ data: Meal[]; total: number }>({
           action: "fetchMeals",
           request: { page, limit: PAGE_SIZE, category },
           exec: () => fetchMeals({ page, limit: PAGE_SIZE, category }),
@@ -69,8 +78,8 @@ export default function MenuPage() {
 
         if (cancelled) return;
 
-        setMeals((prev) => [...prev, ...(data ?? [])]);
-        setHasMore((data ?? []).length === PAGE_SIZE);
+        setMeals((prev) => [...prev, ...(res.data ?? [])]);
+        setHasMore((res.data ?? []).length === PAGE_SIZE);
       } finally {
         setLoading(false);
       }
@@ -85,14 +94,14 @@ export default function MenuPage() {
     if (!loading && hasMore) setPage((p) => p + 1);
   };
 
-  const handleCategoryChange = (next) => {
+  const handleCategoryChange = (next: string) => {
     setCategory(next);
     setMeals([]);
     setPage(1);
     setHasMore(true);
   };
 
-  const handleAdd = (item, qty = 1) => {
+  const handleAdd = (item: Meal, qty = 1) => {
     dispatch(addToCart({ item, qty }));
   };
 

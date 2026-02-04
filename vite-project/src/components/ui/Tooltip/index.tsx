@@ -1,8 +1,13 @@
-import { useState, useId } from "react";
-import "./style.css"; 
+import { useState, useId, type ReactNode } from "react";
+import "./style.css";
 
-export default function Tooltip({ content, children }) {
-  const [hover, setHover] = useState(false);
+export interface TooltipProps {
+  content: ReactNode;
+  children: ReactNode;
+}
+
+export default function Tooltip({ content, children }: TooltipProps) {
+  const [hover, setHover] = useState<boolean>(false);
   const id = useId();
 
   return (

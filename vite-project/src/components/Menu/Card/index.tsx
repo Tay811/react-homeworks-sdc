@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import Button from "../../ui/Button";
 import "./style.css";
 import useFetch from "../../../hooks/useFetch";
 import { createOrderItem } from "../../../api/menu";
 
-export default function Card({ item, onAdd }) {
-  const { meal, instructions, price, img, id } = item;
-  const [qty, setQty] = useState(1);
+import type { Meal } from "../../../types/meal";
+
+export interface CardProps {
+  item: Meal;
+  onAdd?: (item: Meal, qty: number) => void;
+}
+
+export default function Card({ item, onAdd }: CardProps) {
+  const { meal, instructions, price, img } = item;
+  const [qty, setQty] = useState<number>(1);
+
+  const handleAdd = () => {
+    onAdd?.(item, qty);
+  };
+
+  const handleQtyChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setQty(Number(e.target.value) || 1);
+  };
 
   const handleAdd = () => {
     onAdd?.(item, qty);
@@ -28,9 +43,13 @@ export default function Card({ item, onAdd }) {
             <input
               className="menuCard__qty"
               type="number"
-              min="1"
+              min={1}
               value={qty}
+<<<<<<< HEAD:vite-project/src/components/Menu/Card/index.tsx
+              onChange={handleQtyChange}
+=======
               onChange={(e) => setQty(Number(e.target.value) || 1)}
+>>>>>>> origin/main:vite-project/src/components/Menu/Card/index.jsx
             />
 
             <Button variant="primary" size="md" onClick={handleAdd}>

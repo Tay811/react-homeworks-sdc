@@ -2,7 +2,11 @@ import "./style.css";
 import CartImg from "../../../assets/icons/cart.png";
 import { useNavigate } from "react-router-dom";
 
-export default function CartButton({ count = 0 }) {
+export interface CartButtonProps {
+  count?: number;
+}
+
+export default function CartButton({ count = 0 }: CartButtonProps) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,5 +20,3 @@ export default function CartButton({ count = 0 }) {
     </button>
   );
 }
-
-
