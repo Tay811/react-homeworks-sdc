@@ -40,6 +40,8 @@ export default function Card({ item, onAdd }: CardProps) {
               min={1}
               value={qty}
               onChange={handleQtyChange}
+              onChange={handleQtyChange}
+
             />
 
             <Button variant="primary" size="md" onClick={handleAdd}>
