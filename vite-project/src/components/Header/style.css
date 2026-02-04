@@ -1,27 +1,32 @@
 .header {
-  background: #ffffff;    
-}            
+  position: relative;
+  background: var(--bg);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
 
 .header__inner {
   max-width: 1140px;
   margin: 0 auto;
   padding: 18px 24px;
+
   display: flex;
   align-items: center;
 }
 
-.header__brand { 
-    display: inline-flex; 
-    align-items: center; 
+.header__brand {
+  display: inline-flex;
+  align-items: center;
 }
-.brand__icon   { 
-    height: 34px; 
-    display:block; 
+
+.brand__icon {
+  height: 34px;
+  display: block;
 }
 
 .header__right {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 28px;                            
+  gap: 28px;
 }

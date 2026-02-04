@@ -9,16 +9,18 @@
 
 .nav__link {
   text-decoration: none;
-  color: #6b7280;
   font-weight: 500;
-  transition: color .15s ease;
+  color: var(--text-primary);
+  opacity: 0.85;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
 .nav__link:hover {
-  color: #1f2937;
+  opacity: 1;
 }
 
 .nav__link--active {
-  color: #35B8BE;
+  color: var(--accent);
   font-weight: 600;
+  opacity: 1;
 }

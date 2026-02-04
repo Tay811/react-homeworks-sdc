@@ -1,7 +1,7 @@
 .menu {
   padding: 40px 16px 80px;
-  background: #F8FCFC;
-  position: relative;             
+  background: var(--bg);
+  position: relative;
   min-height: 100vh;
 }
 
@@ -15,17 +15,17 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;                     
-  height: 60px;                  
-  background: #fff;
+  width: 100vw;
+  height: 60px;
+  background: var(--surface);
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
-  z-index: 0;                    
+  z-index: 0;
 }
 
 .menu__lead--highlight {
-  color: #35B8BE; 
-  font-weight: 500; 
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .menu__title {
@@ -33,13 +33,13 @@
   font-size: 36px;
   line-height: 1.2;
   text-align: center;
-  color: #35B8BE;
+  color: var(--accent);
   font-weight: 400;
 }
 
 .menu__lead {
   text-align: center;
-  color: #7b8c89;
+  color: var(--text-secondary);
   margin-bottom: 24px;
   max-width: 466px;
   margin-left: auto;
@@ -59,18 +59,18 @@
   margin: 28px auto 0;
   display: block;
   padding: 10px 16px;
-  background: #e7f7f5;
+  background: var(--surface);
   border-radius: 10px;
-  border: 1px solid #c8e8e4;
-  color: #2a3342;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .menu__more:hover {
-  background: #35B8BE;
+  background: var(--accent);
   color: #fff;
-  border-color: #35B8BE;
+  border-color: var(--accent);
 }
 
 .menu__more-wrapper {

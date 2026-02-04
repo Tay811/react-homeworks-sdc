@@ -13,13 +13,12 @@
 }
 
 .footer__tagline {
-  color: #6B7280;
   font-size: 20px;
   line-height: 1.5;
+  color: var(--text-secondary);
 }
 
 .footer__logo-link {
   display: inline-block;
   text-decoration: none;
 }
-

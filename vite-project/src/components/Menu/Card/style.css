@@ -1,6 +1,6 @@
 .menuCard {
-  background: #fff;
-  border: 1px solid #e7efee;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   padding: 16px;
@@ -19,7 +19,7 @@
   object-fit: cover;
   border-radius: 10px;
   display: block;
-  background: #f2f7f7;
+  background: var(--bg);
 }
 
 .menuCard__head {
@@ -30,23 +30,23 @@
 
 .menuCard__title {
   font-weight: 500;
-  color: #2a3342;
   margin: 2px 0 8px;
   font-size: 16px;
+  color: var(--text-primary);
 }
 
 .menuCard__price {
-  color: #35B8BE;
+  color: var(--accent);
   font-weight: 400;
   margin-left: auto;
   font-size: 14px;
 }
 
 .menuCard__desc {
-  color: #6b7a88;
   font-size: 14px;
   line-height: 1.5;
   margin: 0 0 10px;
+  color: var(--text-secondary);
 }
 
 .menuCard__bottom {
@@ -59,31 +59,33 @@
 .menuCard__qty {
   width: 60px;
   height: 45px;
-  border: 1px solid #d9e7e5;
+  border: 1px solid var(--border);
   border-radius: 5px;
   padding: 0;
-  background: #F8FCFC;
-  color: #2a3342;
-  text-align: center;          
-  line-height: 45px;           
+  background: var(--bg);
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 45px;
   font-size: 16px;
   outline: none;
-  appearance: textfield;       
+  appearance: textfield;
 }
 
 .menuCard__btn {
   padding: 8px 14px;
   border-radius: 10px;
-  background: #28c5c0;
+  background: var(--accent);
   color: #fff;
   border: none;
   cursor: pointer;
   transition: transform 0.05s ease, opacity 0.15s ease;
   font-weight: 600;
 }
+
 .menuCard__btn:hover {
   opacity: 0.92;
 }
+
 .menuCard__btn:active {
   transform: translateY(1px);
 }

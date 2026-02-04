@@ -1,8 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import Button from "../../ui/Button";
 import "./style.css";
-import useFetch from "../../../hooks/useFetch";
-import { createOrderItem } from "../../../api/menu";
 
 import type { Meal } from "../../../types/meal";
 
@@ -23,10 +21,6 @@ export default function Card({ item, onAdd }: CardProps) {
     setQty(Number(e.target.value) || 1);
   };
 
-  const handleAdd = () => {
-    onAdd?.(item, qty);
-  };
-
   return (
     <article className="menuCard">
       <div className="menuCard__top">
@@ -45,11 +39,9 @@ export default function Card({ item, onAdd }: CardProps) {
               type="number"
               min={1}
               value={qty}
-<<<<<<< HEAD:vite-project/src/components/Menu/Card/index.tsx
               onChange={handleQtyChange}
-=======
-              onChange={(e) => setQty(Number(e.target.value) || 1)}
->>>>>>> origin/main:vite-project/src/components/Menu/Card/index.jsx
+              onChange={handleQtyChange}
+
             />
 
             <Button variant="primary" size="md" onClick={handleAdd}>
