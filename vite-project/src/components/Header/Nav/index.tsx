@@ -1,8 +1,13 @@
 import "./style.css";
 import { NavLink } from "react-router-dom";
 
+type NavItem = {
+  label: string;
+  to: string;
+};
+
 export default function Nav() {
-  const links = [
+  const links: NavItem[] = [
     { label: "Home", to: "/" },
     { label: "Menu", to: "/menu" },
     { label: "Company", to: "/company" },

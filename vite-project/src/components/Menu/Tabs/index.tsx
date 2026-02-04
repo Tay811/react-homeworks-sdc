@@ -1,11 +1,22 @@
 import Button from "../../ui/Button";
 import "./style.css";
 
-function normalize(str) {
-  return (str ?? "").toString().trim().toLowerCase();
+export type TabItem = {
+  id: number | string;
+  title: string;
+};
+
+function normalize(value: unknown): string {
+  return (value ?? "").toString().trim().toLowerCase();
 }
 
-export default function Tabs({ items = [], value, onChange }) {
+export interface TabsProps {
+  items?: TabItem[];
+  value?: string;
+  onChange?: (nextTitle: string) => void;
+}
+
+export default function Tabs({ items = [], value, onChange }: TabsProps) {
   const current = normalize(value);
 
   return (

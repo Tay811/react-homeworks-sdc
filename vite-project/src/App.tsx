@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,26 +9,37 @@ import LoginPage from "./pages/LoginPage";
 import OrderPage from "./pages/OrderPage";
 
 import { logout } from "./store/slices/authSlice";
+import type { RootState } from "./store";
 
-function ProtectedRoute({ children }) {
-  const user = useSelector((state) => state.auth.user);
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
+
+function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const user = useSelector((state: RootState) => state.auth.user);
 
   if (!user) return <Navigate to="/login" replace />;
-  return children;
+  return <>{children}</>;
 }
 
 export default function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.auth.user);
-  const cartCount = useSelector((state) => state.user.cartCount);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const cartCount = useSelector(
+    (state: RootState) => state.user.cartCount
+  );
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
   return (
-    <AppContainer cartCount={cartCount} user={user} onLogout={handleLogout}>
+    <AppContainer
+      cartCount={cartCount}
+      user={user}
+      onLogout={handleLogout}
+    >
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/menu" element={<MenuPage />} />
