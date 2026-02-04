@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import Menu from "../../components/Menu";
 import { fetchMeals } from "../../api/menu";
 import useFetch from "../../hooks/useFetch";
+
+import { addToCart } from "../../store/slices/userSlice";
 
 const DEFAULT_CATEGORIES = [
   { id: 1, title: "Dessert" },
@@ -9,7 +13,9 @@ const DEFAULT_CATEGORIES = [
   { id: 3, title: "Breakfast" },
 ];
 
-export default function MenuPage({ onAdd }) {
+export default function MenuPage() {
+  const dispatch = useDispatch();
+
   const [meals, setMeals] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -79,12 +85,15 @@ export default function MenuPage({ onAdd }) {
     if (!loading && hasMore) setPage((p) => p + 1);
   };
 
-
   const handleCategoryChange = (next) => {
     setCategory(next);
-    setMeals([]); 
+    setMeals([]);
     setPage(1);
     setHasMore(true);
+  };
+
+  const handleAdd = (item, qty = 1) => {
+    dispatch(addToCart({ item, qty }));
   };
 
   return (
@@ -94,7 +103,7 @@ export default function MenuPage({ onAdd }) {
         onSeeMore={handleSeeMore}
         hasMore={hasMore}
         loading={loading}
-        onAdd={onAdd}
+        onAdd={handleAdd}
         category={category}
         onCategoryChange={handleCategoryChange}
         categories={categories}
