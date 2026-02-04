@@ -29,7 +29,7 @@ export default function Tabs({ items = [], value, onChange }: TabsProps) {
 
         return (
           <Button
-            key={tab.id}
+            key={tab.value}
             variant={isActive ? "primary" : "secondary"}
             size="md"
             onClick={() => onChange?.(tab.value)}

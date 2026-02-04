@@ -16,6 +16,7 @@
     "forceConsistentCasingInFileNames": true,
      "allowJs": true,
     "checkJs": false,
+    "types": ["vite/client", "vitest/globals"]
   },
   "include": ["src"]
 }
