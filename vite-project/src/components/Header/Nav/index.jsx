@@ -1,11 +1,12 @@
 import "./style.css";
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   const links = [
-    { label: "Home", href: "#", active: true },
-    { label: "Menu", href: "#" },
-    { label: "Company", href: "#" },
-    { label: "Login", href: "#" },
+    { label: "Home", to: "/" },
+    { label: "Menu", to: "/menu" },
+    { label: "Company", to: "/company" },
+    { label: "Login", to: "/login" },
   ];
 
   return (
@@ -13,12 +14,14 @@ export default function Nav() {
       <ul className="nav__list">
         {links.map((link) => (
           <li key={link.label} className="nav__item">
-            <a
-              href={link.href}
-              className={`nav__link ${link.active ? "nav__link--active" : ""}`}
+            <NavLink
+              to={link.to}
+              className={({ isActive }) =>
+                `nav__link ${isActive ? "nav__link--active" : ""}`
+              }
             >
               {link.label}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>

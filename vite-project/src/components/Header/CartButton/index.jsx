@@ -1,10 +1,16 @@
 import "./style.css";
 import CartImg from "../../../assets/icons/cart.png";
-
+import { useNavigate } from "react-router-dom";
 
 export default function CartButton({ count = 0 }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/order");
+  };
+
   return (
-    <button className="cartButton" type="button">
+    <button className="cartButton" type="button" onClick={handleClick}>
       <img src={CartImg} alt="Cart" className="cartButton__icon" />
       <span className="cartButton__badge">{count}</span>
     </button>

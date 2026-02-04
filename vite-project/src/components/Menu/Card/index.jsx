@@ -8,15 +8,7 @@ export default function Card({ item, onAdd }) {
   const { meal, instructions, price, img, id } = item;
   const [qty, setQty] = useState(1);
 
-  const { send, loading } = useFetch();
-
-  const handleAdd = async () => {
-    await send({
-      action: "createOrderItem",
-      request: { mealId: id, qty },
-      exec: () => createOrderItem(id, qty),
-    });
-
+  const handleAdd = () => {
     onAdd?.(item, qty);
   };
 
@@ -30,7 +22,7 @@ export default function Card({ item, onAdd }) {
             <span className="menuCard__price">${price} USD</span>
           </div>
 
-          <p className="menuCard__desc">{instructions?.slice(0, 90)}...</p>
+          <p className="menuCard__desc">{instructions?.slice(0, 90)}.</p>
 
           <div className="menuCard__bottom">
             <input
@@ -41,13 +33,8 @@ export default function Card({ item, onAdd }) {
               onChange={(e) => setQty(Number(e.target.value) || 1)}
             />
 
-            <Button 
-              variant="primary" 
-              size="md" 
-              onClick={handleAdd}
-              disabled={loading}
-            >
-              {loading ? "Adding..." : "Add to cart"}
+            <Button variant="primary" size="md" onClick={handleAdd}>
+              Add to cart
             </Button>
           </div>
         </div>

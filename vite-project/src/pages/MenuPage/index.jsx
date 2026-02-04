@@ -9,12 +9,6 @@ const DEFAULT_CATEGORIES = [
   { id: 3, title: "Breakfast" },
 ];
 
-const DEFAULT_CATEGORIES = [
-  { id: 1, title: "Dessert" },
-  { id: 2, title: "Dinner" },
-  { id: 3, title: "Breakfast" },
-];
-
 export default function MenuPage({ onAdd }) {
   const [meals, setMeals] = useState([]);
   const [page, setPage] = useState(1);
@@ -52,38 +46,11 @@ export default function MenuPage({ onAdd }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [send]);
 
   useEffect(() => {
     let cancelled = false;
 
-    (async () => {
-      try {
-        const { data } = await fetchMeals({ page: 1, limit: 1000 });
-        if (cancelled) return;
-
-        const uniq = Array.from(
-        new Set((data ?? []).map((m) => m.category).filter(Boolean))
-      );
-      const list =
-        uniq.length > 0
-          ? uniq.map((key, i) => ({ id: i + 1, title: key }))
-          : DEFAULT_CATEGORIES;
-
-        setCategories(list);
-      } catch (err) {
-      console.error("Failed to load categories:", err);
-      setCategories(DEFAULT_CATEGORIES);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
     (async () => {
       try {
         setLoading(true);
